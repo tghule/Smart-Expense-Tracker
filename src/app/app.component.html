@@ -1,0 +1,36 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>Smart Expense</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <div class="sidebar-header">
+          <h2>Menu</h2>
+          <p>Manage your expenses with ease</p>
+        </div>
+
+        <ion-list lines="none">
+          <ion-menu-toggle autoHide="false" *ngFor="let item of menuItems">
+            <ion-item
+              [routerLink]="item.url"
+              routerDirection="root"
+              routerLinkActive="active-link"
+              detail="false"
+            >
+              <ion-icon [name]="item.icon" slot="start"></ion-icon>
+              <ion-label>{{ item.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <div class="ion-page" id="main-content">
+      <ion-router-outlet></ion-router-outlet>
+    </div>
+  </ion-split-pane>
+</ion-app>
